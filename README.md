@@ -1,193 +1,93 @@
-# Gui_Mazes
+# Project README
 
+## Overview
+The project is a C program that generates mazes using the SDL library for graphical output. The main features include:
 
-## Project Overview
+- Maze generation and rendering.
+- Cross-platform support via multiple makefiles.
 
-This project implements specialized functionality related to mazes.
+## Features
+- Generates and displays mazes in a window.
+- Supports Linux, Windows, Wine, and WebAssembly build environments.
 
-## Core Components
-
-### Main Functionality
-- Implements core algorithms for mazes
-- Efficient data structures
-- Optimized performance
-- Clean code organization
-
-### Technical Features
-- C/C++ implementation
-- Dynamic memory management
-- Platform-independent design
-- Real-time capable
-
-### Architecture
-- Module separation
-- Clear interface design
-- Proper abstraction layers
-- Extensible design
-
-## Use Cases
-- Production systems
-- Educational purposes
-- Research applications
-- Performance-critical operations
-
-## Performance Characteristics
-- Optimized algorithms
-- Efficient memory usage
-- Scalable architecture
-- Minimal overhead
-
-## Implementation Quality
-- Well-organized code
-- Meaningful naming
-- Proper error handling
-- Memory management
-
-## Build and Deployment
-- Standard C/C++ compilation
-- Makefile-based building
-- Cross-platform support
-- Easy integration
-
-
-## Building the Project
-
-### Prerequisites
-- C/C++ Compiler (GCC, Clang, or MSVC)
-- Make utility
-- Standard development tools
-
-### Build Steps
-
-1. Navigate to project directory:
-```bash
-cd Gui_Mazes
-```
-
-2. Build the project:
-```bash
-make -f Makefile.(os) all
-```
-
-3. For clean rebuild:
-```bash
-make -f Makefile.(os) clean
-make -f Makefile.(os) all
-```
-
-4. If there are ./bin and ./libs directories, build libs with:
-```bash
-make -f Makefile.(os) cleanlib
-make -f Makefile.(os) lib
-```
-
-### Build Options
-```bash
-make -f Makefile.(os) all         # build output
-make -f Makefile.(os) do        # build + exe output
-make -f Makefile.(os) clean   # Remove build artifacts
-```
-
-## Running the Project
-
-Execute the compiled binary:
-
-```bash
-./build/Main(.exe)
-```
-
-Or using make:
-```bash
-make -f Makefile.(os) exe
-```
-
-## Project Organization
-
+## Project Structure
+The project is organized as follows:
 ```
 Gui_Mazes/
-├── src/
+├── build/              # .exe files produced by Main.c
+├── src/                # Source code
 │   ├── Main.c          # Entry point
-│   └── *.c             # Implementation files
-├── Makefile            # Build configuration
+│   └── *.h             # Standalone Header-based C-files, without *.c files that implement it
+├── Makefile.linux      # Linux Build configuration
+├── Makefile.windows    # Windows Build configuration
+├── Makefile.wine       # Wine Build configuration
+├── Makefile.web        # Emscripten Build configuration
 └── README.md           # This file
+└── LICENSE
+└── .gitignore
 ```
 
-## Technical Details
+### Prerequisites
+- C/C++ Compiler and Debugger (GCC, Clang)
+- Make utility
+- Standard development tools
+- SDL2 library for graphical output
 
-### Language: C/C++
-- Performance-oriented
-- Direct hardware access where needed
-- Memory efficient
-- Widely portable
+## Build & Run
+### Linux
+1. Navigate to the project directory:
+    ```sh
+    cd Gui_Mazes
+    ```
+2. Build the project:
+    ```sh
+    make -f Makefile.linux all
+    ```
+3. Execute the program:
+    ```sh
+    make -f Makefile.linux exe
+    ```
 
-### Key Technologies
-- Standard C library
-- System-specific libraries as needed
-- Algorithm optimization
-- Efficient data structures
+### Windows
+1. Navigate to the project directory:
+    ```sh
+    cd Gui_Mazes
+    ```
+2. Build the project:
+    ```sh
+    make -f Makefile.windows all
+    ```
+3. Execute the program:
+    ```sh
+    make -f Makefile.windows exe
+    ```
 
-### Code Quality
-- Clean, readable implementation
-- Proper error handling
-- Resource management
-- Well-documented algorithms
+### Wine
+1. Navigate to the project directory:
+    ```sh
+    cd Gui_Mazes
+    ```
+2. Build the project for Wine:
+    ```sh
+    make -f Makefile.wine all
+    ```
+3. Execute the program in Wine:
+    ```sh
+    WINEPREFIX=~/wine64 WINEARCH=win64 wine build/Main.exe
+    ```
 
-## Development Notes
+### WebAssembly
+1. Navigate to the project directory:
+    ```sh
+    cd Gui_Mazes
+    ```
+2. Build the project for WebAssembly:
+    ```sh
+    make -f Makefile.web all
+    ```
+3. Run the WebAssembly application in a web browser:
+    ```sh
+    emrun --no_browser --port 8080 build/index.html
+    ```
 
-### Architecture Decisions
-- Modular design for reusability
-- Efficient algorithms for performance
-- Clear separation of concerns
-- Extensible structure
-
-### Performance Optimizations
-- Algorithm efficiency
-- Memory layout optimization
-- Cache-conscious programming
-- Minimal overhead
-
-### Portability
-- Cross-platform compatible
-- Platform-specific optimizations where possible
-- Standard library usage
-- No external dependencies (where feasible)
-
-## Troubleshooting
-
-### Build Issues
-- Ensure compiler is installed
-- Check file paths and permissions
-- Verify Make installation
-- Review compiler error messages
-
-### Runtime Issues
-- Check input data validity
-- Verify file accessibility
-- Ensure sufficient memory
-- Review output format
-
-### Performance Issues
-- Check compiler optimization flags
-- Profile hot code paths
-- Review algorithm complexity
-- Consider input size
-
-## Future Improvements
-
-Potential enhancements:
-- Additional optimization opportunities
-- Extended functionality
-- Platform-specific optimizations
-- Performance profiling
-
-## References
-
-For technical background:
-- Algorithm textbooks
-- Computer science references
-- Language documentation
-- Online educational resources
-
----
-
-*Project implementing practical algorithms and data structures in C/C++*
+These steps provide a comprehensive guide to building and running the project on different platforms.
